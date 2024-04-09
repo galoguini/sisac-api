@@ -22,4 +22,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('docs/', include_docs_urls(title='SIBAC API')),
     path('api/v1/usuarios/', include('usuarios.urls')),
+    path('api/v1/clientes/', include('clientes.urls')),
+    path('api/v1/usuarios/', include('usuarios.urls')),
+    path('api/v1/usuarios/', include('usuarios.urls')),
 ]

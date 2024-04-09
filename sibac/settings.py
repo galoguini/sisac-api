@@ -42,6 +42,9 @@ INSTALLED_APPS = [
     'corsheaders',
     'coreapi',
     'usuarios',
+    'clientes',
+    'productos',
+    'presupuestos',
 ]
 
 MIDDLEWARE = [
