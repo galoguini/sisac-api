@@ -1,6 +1,6 @@
 from django.db import models
-from django.core.exceptions import ValidationError
 from django_countries.fields import CountryField
+from usuarios.models import Usuario
 
 # Create your models here.
 
@@ -22,6 +22,7 @@ class Cliente(models.Model):
     ('IVA NO ALCANZADO', 'IVA NO ALCANZADO'),
     ]
 
+    usuario = models.ForeignKey(Usuario, on_delete=models.CASCADE)
     nombre_apellido = models.CharField(max_length=100)
     tipo_identificacion = models.CharField(max_length=15, choices=IDENTIFICACION, default='CUIL')
     numero_identificacion = models.CharField(max_length=40)
