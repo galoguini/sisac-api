@@ -5,16 +5,20 @@ from usuarios.models import Usuario
 
 class Producto(models.Model):
     CATEGORIAS = [
-    ('SERVICIOS', 'SERVICIOS'),
-    ('PRODUCTOS', 'PRODUCTOS'),
+    ('SERVICIO', 'SERVICIO'),
+    ('PRODUCTO', 'PRODUCTO'),
     ('OTRO', 'OTRO'),
     ]
 
     TASA = [
-    (0, '0%'),
-    (10.5, '10.5%'),
-    (21, 'IVA 21%'),
-    (27, '27%'),
+    ('IVA EXENTO', 'IVA EXENTO'),
+    ('IVA NO GRAVADO', 'IVA NO GRAVADO'),
+    ("0.0", 'IVA 0%'),
+    ("2.5", 'IVA 2.5%'),
+    ("5.0", 'IVA 5%'),
+    ("10.5", 'IVA 10.5%'),
+    ("21.0", 'IVA 21%'),
+    ("27.0", 'IVA 27%'),
     ]
 
     MEDIDA = [
@@ -25,17 +29,15 @@ class Producto(models.Model):
     ('OTRO', 'OTRO'),
     ]
 
-    # usuario = models.ForeignKey(Usuario, on_delete=models.CASCADE)
+    usuario = models.ForeignKey(Usuario, on_delete=models.CASCADE)
     nombre = models.CharField(max_length=100)
     codigo_sku = models.CharField(max_length=50, null=True, blank=True)
     codigo_barra = models.CharField(max_length=50, null=True, blank=True)
-    categoria = models.CharField(max_length=10, choices=CATEGORIAS, default='PRODUCTOS')
-    tasa_iva = models.DecimalField(max_digits=5, decimal_places=2, choices=TASA, default=21)
-    unidad_medida = models.CharField(max_length=10, choices=MEDIDA, default='UNIDAD')
-    # cuenta_contable = models.CharField(max_length=50, null=True, blank=True)
-    actividad = models.CharField(max_length=100, null=True, blank=True)
-    # formulario_iva2002 = models.CharField(max_length=100, null=True, blank=True) # categoria formulario iva 2002
+    categoria = models.CharField(max_length=10, choices=CATEGORIAS)
+    tasa_iva = models.CharField(max_length=17, choices=TASA)
+    unidad_medida = models.CharField(max_length=10, choices=MEDIDA)
     precio_venta_usd = models.DecimalField(max_digits=10, decimal_places=2, null=True, blank=True)
+    stock = models.IntegerField(null=True, blank=True)
     observaciones = models.TextField(null=True, blank=True)
 
     def __str__(self):

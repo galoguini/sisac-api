@@ -11,15 +11,15 @@ class ListadoProductosView(ListAPIView):
     filter_backends = [DjangoFilterBackend]
     filterset_class = ProductoFilter
     search_fields = ['nombre', 'precio_venta_usd']
-    permission_classes = [IsAuthenticated]
+    # permission_classes = [IsAuthenticated]
 
-    def get_queryset(self):
-        user = self.request.user
-        return Producto.objects.filter(usuario=user)
+    # def get_queryset(self):
+    #     user = self.request.user
+    #     return Producto.objects.filter(usuario=user)
 
 class AgregarProductoView(CreateAPIView):
     serializer_class = ProductoSerializer
-    permission_classes = [IsAuthenticated]
+    # permission_classes = [IsAuthenticated]
 
-    def perform_create(self, serializer):
-        serializer.save(usuario=self.request.user)
+    # def perform_create(self, serializer):
+    #     serializer.save(usuario=self.request.user)
