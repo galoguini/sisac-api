@@ -1,5 +1,5 @@
 from .serializers import ProductoSerializer
-from rest_framework.permissions import IsAuthenticated
+from rest_framework import permissions
 from rest_framework.generics import CreateAPIView, ListAPIView
 from .models import Producto
 from .filters import ProductoFilter
@@ -11,15 +11,15 @@ class ListadoProductosView(ListAPIView):
     filter_backends = [DjangoFilterBackend]
     filterset_class = ProductoFilter
     search_fields = ['nombre', 'precio_venta_usd']
-    # permission_classes = [IsAuthenticated]
+    permission_classes = [permissions.IsAuthenticated]
 
-    # def get_queryset(self):
-    #     user = self.request.user
-    #     return Producto.objects.filter(usuario=user)
+    def get_queryset(self):
+        user = self.request.user
+        return Producto.objects.filter(usuario=user)
 
 class AgregarProductoView(CreateAPIView):
     serializer_class = ProductoSerializer
-    # permission_classes = [IsAuthenticated]
+    permission_classes = [permissions.IsAuthenticated]
 
-    # def perform_create(self, serializer):
-    #     serializer.save(usuario=self.request.user)
+    def perform_create(self, serializer):
+        serializer.save(usuario=self.request.user)
