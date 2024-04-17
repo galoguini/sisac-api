@@ -9,13 +9,13 @@ class Migration(migrations.Migration):
     initial = True
 
     dependencies = [
-        ('productos', '0001_initial'),
+        ('presupuestos', '0002_initial'),
         ('usuarios', '0001_initial'),
     ]
 
     operations = [
         migrations.AddField(
-            model_name='producto',
+            model_name='presupuesto',
             name='usuario',
             field=models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='usuarios.usuario'),
         ),

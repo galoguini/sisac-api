@@ -1,2 +1,2 @@
 # sibac-api
- Sistema Basico Contable
+ Sistema Basico de Administración Contable
