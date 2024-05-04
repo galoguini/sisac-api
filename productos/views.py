@@ -5,12 +5,22 @@ from .filters import ProductoFilter
 from django_filters import rest_framework
 from usuarios.models import Usuario
 
+# class ListadoProductosView(generics.ListAPIView):
+#     serializer_class = ProductoSerializer
+#     filter_backends = [rest_framework.DjangoFilterBackend]
+#     filterset_class = ProductoFilter
+#     permission_classes = [permissions.IsAuthenticated]
+
+#     def get_queryset(self):
+#         user = self.request.user
+#         queryset = Producto.objects.filter(usuario=user)
+#         filter = ProductoFilter(self.request.GET, queryset=queryset)
+#         return filter.qs
+
 class ListadoProductosView(generics.ListAPIView):
     serializer_class = ProductoSerializer
-    queryset = Producto.objects.all()
     filter_backends = [rest_framework.DjangoFilterBackend]
     filterset_class = ProductoFilter
-    search_fields = ['nombre', 'precio_venta_usd']
     permission_classes = [permissions.IsAuthenticated]
 
     def get_queryset(self):

@@ -11,7 +11,6 @@ class ListadoClientesView(generics.ListAPIView):
     queryset = Cliente.objects.all()
     filter_backends = [rest_framework.DjangoFilterBackend]
     filterset_class = ClienteFilter
-    search_fields = ['nombre_apellido', 'numero_identificacion', 'pais', 'provincia', 'localidad', 'email', 'telefono']
     permission_classes = [permissions.IsAuthenticated]
 
     def get_queryset(self):

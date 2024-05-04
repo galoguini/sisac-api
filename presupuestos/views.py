@@ -14,7 +14,7 @@ class ListarPresupuestosView(generics.ListAPIView):
     def get_queryset(self):
         usuario = Usuario.objects.get(user_ptr_id=self.request.user.id)
         return Presupuesto.objects.filter(usuario=usuario, empresa=usuario.empresa_seleccionada)
-    
+
 class AgregarPresupuestoView(generics.CreateAPIView):
     queryset = Presupuesto.objects.all()
     serializer_class = PresupuestoSerializer

@@ -20,3 +20,20 @@ class LogoutView(APIView):
     def post(self, request):
         Token.objects.filter(user=request.user).delete()
         return Response(status=204)
+    
+class PerfilView(APIView):
+    permission_classes = [permissions.IsAuthenticated]
+
+    def get(self, request):
+        return Response(UserSerializer(request.user).data)
+    
+class EditarPerfilView(APIView):
+    permission_classes = [permissions.IsAuthenticated]
+
+    def put(self, request):
+        usuario = request.user
+        serializer = UserSerializer(usuario, data=request.data, partial=True)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data)
+        return Response(serializer.errors, status=400)
