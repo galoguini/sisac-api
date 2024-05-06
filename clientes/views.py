@@ -22,5 +22,14 @@ class AltaClienteView(generics.CreateAPIView):
     permission_classes = [permissions.IsAuthenticated]
 
     def perform_create(self, serializer):
-        usuario = Usuario.objects.get(user_ptr_id=self.request.user.id)
+        usuario = self.request.user
         serializer.save(usuario=usuario)
+
+class EliminarClienteView(generics.DestroyAPIView):
+    serializer_class = ClienteSerializer
+    queryset = Cliente.objects.all()
+    permission_classes = [permissions.IsAuthenticated]
+
+    def get_queryset(self):
+        user = self.request.user
+        return Cliente.objects.filter(usuario=user)

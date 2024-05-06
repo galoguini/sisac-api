@@ -12,8 +12,8 @@ class ListarPresupuestosView(generics.ListAPIView):
     filterset_class = PresupuestoFilter
 
     def get_queryset(self):
-        usuario = Usuario.objects.get(user_ptr_id=self.request.user.id)
-        return Presupuesto.objects.filter(usuario=usuario, empresa=usuario.empresa_seleccionada)
+        user = self.request.user
+        return Presupuesto.objects.filter(usuario=user)
 
 class AgregarPresupuestoView(generics.CreateAPIView):
     queryset = Presupuesto.objects.all()
@@ -21,8 +21,9 @@ class AgregarPresupuestoView(generics.CreateAPIView):
     permission_classes = [permissions.IsAuthenticated]
 
     def perform_create(self, serializer):
-        usuario = Usuario.objects.get(user_ptr_id=self.request.user.id)
-        serializer.save(usuario=usuario)
+        usuario = self.request.user
+        empresa = usuario.empresa_seleccionada
+        serializer.save(usuario=usuario, empresa=empresa)
 
 class EditarPresupuestoView(generics.UpdateAPIView):
     queryset = Presupuesto.objects.all()

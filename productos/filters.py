@@ -15,5 +15,8 @@ class ProductoFilter(django_filters.FilterSet):
             Q(codigo_sku__icontains=value) |
             Q(codigo_barra__icontains=value) |
             Q(precio_venta_usd__icontains=value) |
-            Q(observaciones__icontains=value)
+            Q(observaciones__icontains=value) |
+            Q(categoria__icontains=value) |
+            Q(tasa_iva__icontains=value) |
+            Q(unidad_medida__icontains=value)
         )

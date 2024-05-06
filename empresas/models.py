@@ -15,7 +15,7 @@ class Empresa(models.Model):
     direccion = models.CharField(max_length=100)
     provincia = models.CharField(max_length=50)
     localidad = models.CharField(max_length=50)
-    telefono = models.CharField(max_length=15)
+    telefono = models.CharField(max_length=20)
     email = models.EmailField()
     CBU = models.CharField(max_length=22, blank=True, null=True)
     logo = models.ImageField(upload_to='logos/', blank=True, null=True)
