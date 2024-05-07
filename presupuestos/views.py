@@ -29,3 +29,9 @@ class EditarPresupuestoView(generics.UpdateAPIView):
     queryset = Presupuesto.objects.all()
     serializer_class = PresupuestoSerializer
     permission_classes = [permissions.IsAuthenticated]
+
+class EliminarPresupuestoView(generics.DestroyAPIView):
+    queryset = Presupuesto.objects.all()
+    serializer_class = PresupuestoSerializer
+    permission_classes = [permissions.IsAuthenticated]
+    lookup_field = 'numero_presupuesto'

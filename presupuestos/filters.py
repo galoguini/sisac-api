@@ -3,7 +3,8 @@ from django.db.models import Q
 from .models import Presupuesto
 
 class PresupuestoFilter(django_filters.FilterSet):
-    fecha = django_filters.DateFromToRangeFilter()
+    fecha_inicio = django_filters.CharFilter(field_name="fecha", lookup_expr='gte')
+    fecha_fin = django_filters.CharFilter(field_name="fecha", lookup_expr='lte')
     palabra_clave = django_filters.CharFilter(method='filter_by_keyword')
 
     class Meta:
