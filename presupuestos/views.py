@@ -35,3 +35,15 @@ class EliminarPresupuestoView(generics.DestroyAPIView):
     serializer_class = PresupuestoSerializer
     permission_classes = [permissions.IsAuthenticated]
     lookup_field = 'numero_presupuesto'
+
+class DetallePresupuestoView(generics.RetrieveAPIView):
+    queryset = Presupuesto.objects.all()
+    serializer_class = PresupuestoSerializer
+    permission_classes = [permissions.IsAuthenticated]
+    lookup_field = 'numero_presupuesto'
+
+class ImpriPresupuestoView(generics.RetrieveAPIView):
+    queryset = Presupuesto.objects.all()
+    serializer_class = PresupuestoSerializer
+    permission_classes = [permissions.IsAuthenticated]
+    lookup_field = 'numero_presupuesto'
