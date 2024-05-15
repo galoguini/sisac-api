@@ -1,4 +1,4 @@
-from rest_framework import generics, permissions, response, views, status
+from rest_framework import generics, permissions, response, views, status, exceptions
 from .models import Empresa
 from .serializers import EmpresaSerializer
 from usuarios.models import Usuario
@@ -38,12 +38,15 @@ class AgregarEmpresaView(generics.CreateAPIView):
             raise ValidationError('Este usuario ya tiene una empresa.')
         serializer.save(usuario=self.request.user)
 
-class ListarEmpresasView(generics.ListAPIView):
+class ListarEmpresasView(generics.RetrieveAPIView):
     serializer_class = EmpresaSerializer
     permission_classes = [permissions.IsAuthenticated]
 
-    def get_queryset(self):
-        return Empresa.objects.filter(usuario=self.request.user)
+    def get_object(self):
+        try:
+            return Empresa.objects.get(usuario=self.request.user)
+        except Empresa.DoesNotExist:
+            raise exceptions.NotFound("No se encontró la empresa para el usuario actual.")
     
 class SeleccionarEmpresaView(views.APIView):
     permission_classes = [permissions.IsAuthenticated]
