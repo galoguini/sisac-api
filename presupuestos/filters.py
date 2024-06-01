@@ -21,11 +21,11 @@ class PresupuestoFilter(django_filters.FilterSet):
             Q(cliente__domicilio__icontains=value) |
             Q(cliente__email__icontains=value) |
             Q(cliente__telefono__icontains=value) |
-            Q(producto__nombre__icontains=value) |
-            Q(producto__codigo_sku__icontains=value) |
-            Q(producto__codigo_barra__icontains=value) |
-            Q(producto__categoria__icontains=value) |
-            Q(producto__precio_venta_usd__icontains=value) |
-            Q(producto__observaciones__icontains=value) |
+            Q(productos__producto__nombre__icontains=value) |
+            Q(productos__producto__codigo_sku__icontains=value) |
+            Q(productos__producto__codigo_barra__icontains=value) |
+            Q(productos__producto__categoria__icontains=value) |
+            Q(productos__producto__precio_venta_usd__icontains=value) |
+            Q(productos__producto__observaciones__icontains=value) |
             Q(observaciones__icontains=value)
         )

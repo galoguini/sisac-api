@@ -12,10 +12,7 @@ class Presupuesto(models.Model):
     fecha = models.CharField(max_length=10)
     vencimiento = models.CharField(max_length=10)
     moneda = models.CharField(max_length=3)
-    cantidad = models.PositiveIntegerField(default=1)
-    precio = models.DecimalField(max_digits=20, decimal_places=2)
     observaciones = models.TextField(blank=True, null=True)
-    producto = models.ForeignKey(Producto, on_delete=models.CASCADE)
     numero_presupuesto = models.PositiveIntegerField(default=5000)
 
     def save(self, *args, **kwargs):
@@ -25,5 +22,8 @@ class Presupuesto(models.Model):
                 self.numero_presupuesto = ultimo_presupuesto.numero_presupuesto + 1
         super().save(*args, **kwargs)
 
-    def __str__(self):
-        return f'Presupuesto numero {self.numero_presupuesto} de {self.cliente.nombre_apellido}'
+class PresupuestoProducto(models.Model):
+    presupuesto = models.ForeignKey(Presupuesto, related_name='productos', on_delete=models.CASCADE)
+    producto = models.ForeignKey(Producto, on_delete=models.CASCADE)
+    cantidad = models.PositiveIntegerField()
+    precio = models.DecimalField(max_digits=20, decimal_places=2)

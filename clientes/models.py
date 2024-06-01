@@ -6,8 +6,8 @@ from usuarios.models import Usuario
 class Cliente(models.Model):
     usuario = models.ForeignKey(Usuario, on_delete=models.CASCADE)
     nombre_apellido = models.CharField(max_length=100)
-    tipo_identificacion = models.CharField(max_length=15)
-    numero_identificacion = models.CharField(max_length=40)
+    tipo_identificacion = models.CharField(max_length=17)
+    numero_identificacion = models.CharField(max_length=40, null=True, blank=True)
     otro_identificacion = models.CharField(max_length=40, null=True, blank=True)
     condicion_iva = models.CharField(max_length=30)
     pais = models.CharField(max_length=100)

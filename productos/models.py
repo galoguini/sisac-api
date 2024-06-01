@@ -15,5 +15,11 @@ class Producto(models.Model):
     stock = models.IntegerField(null=True, blank=True)
     observaciones = models.TextField(null=True, blank=True)
 
+    # def __str__(self):
+    #     return self.nombre
+    
     def __str__(self):
-        return self.nombre
+        return str(self.id)
+    
+    def get_id(self):
+        return self.id
