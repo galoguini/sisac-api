@@ -124,7 +124,7 @@ class PresupuestoProductoSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = PresupuestoProducto
-        fields = ['producto', 'cantidad', 'precio']
+        fields = ['producto', 'cantidad', 'precio', 'descripcion']
 
 # class PresupuestoProductoSerializer(serializers.ModelSerializer):
 #     producto = serializers.SlugRelatedField(slug_field='nombre', queryset=Producto.objects.all(),)

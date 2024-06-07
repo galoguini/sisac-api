@@ -12,6 +12,7 @@ class Empresa(models.Model):
     cuit = models.CharField(max_length=20)
     nro_ingresos_brutos = models.CharField(max_length=20)
     fecha_inicio_actividad = models.CharField(max_length=10)
+    pais = models.CharField(max_length=50)
     direccion = models.CharField(max_length=100)
     provincia = models.CharField(max_length=50)
     localidad = models.CharField(max_length=50)

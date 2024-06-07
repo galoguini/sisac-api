@@ -27,3 +27,4 @@ class PresupuestoProducto(models.Model):
     producto = models.ForeignKey(Producto, on_delete=models.CASCADE)
     cantidad = models.PositiveIntegerField()
     precio = models.DecimalField(max_digits=20, decimal_places=2)
+    descripcion = models.TextField(blank=True, null=True)

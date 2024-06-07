@@ -6,6 +6,6 @@ class EmpresaSerializer(serializers.ModelSerializer):
         model = Empresa
         fields = [
             'nombre_empresa', 'nombre_fantasia', 'categoria_fiscal', 'tipo_cuenta', 'cuit', 
-            'nro_ingresos_brutos', 'fecha_inicio_actividad', 'direccion', 'provincia', 
+            'nro_ingresos_brutos', 'fecha_inicio_actividad', 'pais', 'direccion', 'provincia', 
             'localidad', 'telefono', 'email', 'CBU'
         ]
