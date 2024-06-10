@@ -14,9 +14,6 @@ class Producto(models.Model):
     precio_venta_usd = models.DecimalField(max_digits=15, decimal_places=2, null=True, blank=True)
     stock = models.IntegerField(null=True, blank=True)
     observaciones = models.TextField(null=True, blank=True)
-
-    # def __str__(self):
-    #     return self.nombre
     
     def __str__(self):
         return str(self.id)
