@@ -157,5 +157,5 @@ class PresupuestoSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Presupuesto
-        fields = ['id', 'cliente', 'fecha', 'vencimiento', 'moneda', 'observaciones', 'numero_presupuesto', 'productos']
+        fields = ['id', 'cliente', 'fecha', 'vencimiento', 'moneda', 'observaciones', 'remitido', 'numero_presupuesto', 'productos']
 
