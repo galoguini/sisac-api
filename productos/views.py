@@ -3,7 +3,6 @@ from rest_framework import permissions, generics
 from .models import Producto
 from .filters import ProductoFilter
 from django_filters import rest_framework
-from usuarios.models import Usuario
 
 class ListadoProductosView(generics.ListAPIView):
     serializer_class = ProductoSerializer

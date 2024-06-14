@@ -1,11 +1,25 @@
 from rest_framework import generics, permissions, response, views, status, exceptions
 from .models import Empresa
 from .serializers import EmpresaSerializer
-from usuarios.models import Usuario
 from rest_framework.response import Response
 from rest_framework.views import APIView
 from rest_framework import status
 from rest_framework.exceptions import ValidationError
+
+class ListarEmpresasView(generics.RetrieveAPIView):
+    serializer_class = EmpresaSerializer
+    permission_classes = [permissions.IsAuthenticated]
+
+    def get_object(self):
+        try:
+            return Empresa.objects.get(usuario=self.request.user)
+        except Empresa.DoesNotExist:
+            raise exceptions.NotFound("No se encontró la empresa para el usuario actual.")
+    
+    def get_serializer_context(self):
+        context = super().get_serializer_context()
+        context['request'] = self.request
+        return context
 
 class EditarEmpresaView(APIView):
     permission_classes = [permissions.IsAuthenticated]
@@ -36,18 +50,13 @@ class AgregarEmpresaView(generics.CreateAPIView):
     def perform_create(self, serializer):
         if Empresa.objects.filter(usuario=self.request.user).exists():
             raise ValidationError('Este usuario ya tiene una empresa.')
+
+        logo_file = self.request.FILES.get('logo')
+        if logo_file:
+            serializer.validated_data['logo'] = logo_file
+
         serializer.save(usuario=self.request.user)
 
-class ListarEmpresasView(generics.RetrieveAPIView):
-    serializer_class = EmpresaSerializer
-    permission_classes = [permissions.IsAuthenticated]
-
-    def get_object(self):
-        try:
-            return Empresa.objects.get(usuario=self.request.user)
-        except Empresa.DoesNotExist:
-            raise exceptions.NotFound("No se encontró la empresa para el usuario actual.")
-    
 class SeleccionarEmpresaView(views.APIView):
     permission_classes = [permissions.IsAuthenticated]
 
