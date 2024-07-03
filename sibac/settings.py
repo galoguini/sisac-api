@@ -145,8 +145,7 @@ REST_FRAMEWORK = {
 }
 
 CORS_ALLOWED_ORIGINS = [
-    "http://localhost:5174",
-    "http://localhost:5173",
+    "https://sisac-nine.vercel.app",
 ]
 
 AUTH_USER_MODEL = 'usuarios.Usuario'
