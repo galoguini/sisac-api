@@ -1,1 +1,1 @@
-web: gunicorn sibac.wsgi
+web: python manage.py collectstatic && gunicorn sibac.wsgi
