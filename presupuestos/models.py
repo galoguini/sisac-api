@@ -1,5 +1,4 @@
 from django.db import models
-from django.utils import timezone
 from usuarios.models import Usuario
 from clientes.models import Cliente
 from productos.models import Producto

@@ -5,7 +5,11 @@ class EmpresaSeleccionadaMiddleware:
         self.get_response = get_response
 
     def __call__(self, request):
+        if request.path.startswith('/admin'):
+            return self.get_response(request)
+
         if request.user.is_authenticated and not request.user.empresa_seleccionada:
             return Response({'error': 'Debe seleccionar o crear una empresa.'}, status=400)
+        
         response = self.get_response(request)
         return response
