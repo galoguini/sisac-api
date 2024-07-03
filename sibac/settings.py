@@ -156,4 +156,4 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
-CSRF_TRUSTED_ORIGINS = ['https://web-production-d54a.up.railway.app/']
+CSRF_TRUSTED_ORIGINS = ['https://web-production-d54a.up.railway.app']
