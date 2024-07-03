@@ -7,6 +7,7 @@ coreapi==2.3.3
 coreschema==0.0.4
 cryptography==42.0.8
 defusedxml==0.8.0rc2
+dj-database-url==2.2.0
 Django==5.0.3
 django-cors-headers==4.3.1
 django-filter==24.2
@@ -24,6 +25,7 @@ packaging==24.1
 pillow==10.3.0
 proto-plus==1.24.0
 protobuf==4.25.3
+psycopg2==2.9.9
 psycopg2-binary==2.9.9
 pyasn1==0.6.0
 pyasn1_modules==0.4.0
