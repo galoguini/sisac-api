@@ -15,5 +15,7 @@ class EmpresaSerializer(serializers.ModelSerializer):
     def get_logo(self, obj):
         request = self.context.get('request')
         if obj.logo:
-            return request.build_absolute_uri(obj.logo.url)
+            url = request.build_absolute_uri(obj.logo.url)
+            url = url.replace('http://', 'https://')
+            return url
         return None
