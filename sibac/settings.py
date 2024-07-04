@@ -128,7 +128,7 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.0/howto/static-files/
 
-STATIC_URL = '/static/'
+STATIC_URL = 'https://web-production-d54a.up.railway.app/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
 # Default primary key field type
@@ -150,11 +150,9 @@ CORS_ALLOWED_ORIGINS = [
 
 AUTH_USER_MODEL = 'usuarios.Usuario'
 
-MEDIA_URL = '/media/'
+MEDIA_URL = 'https://web-production-d54a.up.railway.app/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 CSRF_TRUSTED_ORIGINS = ['https://web-production-d54a.up.railway.app']
-
-SECURE_SSL_REDIRECT = True
