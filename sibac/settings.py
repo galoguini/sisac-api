@@ -30,7 +30,7 @@ SECRET_KEY = 'django-insecure-v-)tjqf)d(m+g*opwi4%fx-rg2)2w%(+j-$fh195f2*z(-9%+8
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['web-production-d54a.up.railway.app']
+ALLOWED_HOSTS = ["*"]
 
 # Application definition
 
@@ -145,7 +145,8 @@ REST_FRAMEWORK = {
 }
 
 CORS_ALLOWED_ORIGINS = [
-    "https://sisac-nine.vercel.app",
+    "http://localhost:5173",
+    "http://localhost:5174",
 ]
 
 AUTH_USER_MODEL = 'usuarios.Usuario'
